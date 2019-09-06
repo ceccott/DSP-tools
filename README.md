@@ -2,6 +2,8 @@
 
 Various tools for DSP purposes:
 
+#### Python
+
 * `waveform_coeff_header_generator.py` to design waveform periods samples and export the coefficients to an header `.hpp` file for C/C++ usage
 
   * usage example: `./waveform_coeff_header_generator.py -f 100 -sf 100 -a 1 -shape sin -dtype double`
@@ -36,4 +38,17 @@ Various tools for DSP purposes:
     ```
 
 
+
+#### C/C++
+
+* `cplot_utils.h` header-only minimal C interface to GNU plot for simple single trace in-code data logging and plotting
+
+  * usage:
+
+    ```
+    cplot_append(double x, double y); // to append a data point
+    cplot_plot(); 					  // to display plot
+    ```
+
+    ​
 
