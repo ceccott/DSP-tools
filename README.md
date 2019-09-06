@@ -55,4 +55,9 @@ Various tools for DSP purposes:
 #### Matlab
 
 * Various DSP functions in `./Matlab/`
+  * clark/inverse clark transform
+  * park/inverse park transform
+  * lti system delay and distortion measure
+  * simplified FFT plot interface
+  * phase equalizer filter designer
 
