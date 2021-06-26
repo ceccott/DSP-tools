@@ -7,13 +7,25 @@ function [Y,f] = fftplot(x,Fs,Fstop,xaxis)
     P2 = abs(Y/L); %normalized fft
     P1 = P2(floor(1:L/2+1),:);
     P1(2:end-1,:) = 2*P1(2:end-1,:);
+    if(Fstop > Fs/2)
+        warning('Fstop > Fs/2, xaxis resized to Fs/2');
+    end
     switch xaxis
         case 'f'          
             f = Fs/2*linspace(0,1,(L/2+1));
             f = repmat(f',1,size(x,2));
-          %  length(f(1:min(length(f),floor(Fstop/Fs*L)),:))
-          %  length(P1(1:floor(Fstop/Fs*L),:))
             plot(f(1:min(length(f),floor(Fstop/Fs*L)),:),P1(1:min(length(P1),floor(Fstop/Fs*L)),:)); 
+            if(Fstop >= Fs/2)
+                hold on;
+                plot(Fs/2,0,'x');
+                hold off;
+            end
+            xlabel('freq (Hz)');
+            ylabel('|X|');
+        case 'logf'          
+            f = Fs/2*linspace(0,1,(L/2+1));
+            f = repmat(f',1,size(x,2));
+            semilogy(f(1:min(length(f),floor(Fstop/Fs*L)),:),P1(1:min(length(P1),floor(Fstop/Fs*L)),:)); 
             if(Fstop >= Fs/2)
                 hold on;
                 plot(Fs/2,0,'x');
